@@ -1,10 +1,11 @@
 const Outputter = require('io/Outputter');
 const Colour = require('colour');
 const CharacterCreation = require('game/story/CharacterCreation');
+const SaveHelper = require('helpers/SaveHelper');
 
-let Game = null;
+const Game = { running: false };
 
-const isRunning = () => !!Game;
+const isRunning = () => Game.running;
 
 const perform = (command) => {
 
@@ -26,13 +27,20 @@ const show = (what, ...rest) => {
 
 const create = () => {
     CharacterCreation().then((player) => {
-        Game = { player };
+        Game.player = player;
+
+        save();
 
         // TODO: Start game
         console.log('START GAME');
     }).catch((action) => {
         if (action === 'MAIN') require('game/Controller').showMainMenu();
     });
+};
+
+const save = () => {
+    console.log('Saving game...');
+    SaveHelper.save(Game.player.name, Game);
 };
 
 const load = () => {
