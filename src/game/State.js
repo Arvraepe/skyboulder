@@ -3,7 +3,7 @@ const Colour = require('colour');
 const CharacterCreation = require('game/story/CharacterCreation');
 const SaveHelper = require('helpers/SaveHelper');
 
-const Game = { running: false };
+let Game = { running: false };
 
 const isRunning = () => Game.running;
 
@@ -44,8 +44,24 @@ const save = () => {
 };
 
 const load = () => {
-    Outputter.error('NOT_IMPLEMENTED_YET');
-    require('game/Controller').showMainMenu();
+    // Outputter.error('NOT_IMPLEMENTED_YET');
+    // require('game/Controller').showMainMenu();
+
+    const Inquirer = require('inquirer');
+    const saves = SaveHelper.getSaveNames().map((name) => ({ name }));
+
+    Inquirer.prompt({
+        type: 'list',
+        name: 'save',
+        message: 'Please select the save file you want to load',
+        choices: saves
+    }).then((answers) => {
+        Game = SaveHelper.load(answers.save);
+
+        //TODO: Start game
+        console.log('CONTINUE GAME');
+    });
+
 };
 
 module.exports = { perform, isRunning, create, load };

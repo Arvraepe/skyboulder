@@ -46,8 +46,7 @@ const showMainMenu = () => {
         choices: [{
             name: 'New'
         }, {
-            name: 'Load',
-            disabled: 'Coming soon!'
+            name: 'Load'
         }, {
             name: 'Credits'
         }, {

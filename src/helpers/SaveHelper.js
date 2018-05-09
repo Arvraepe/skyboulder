@@ -31,6 +31,8 @@ const deserialize = (string) => {
 };
 
 const save = (name, state) => fs.writeFile(`${ROOT}/saves/${name}`, serialize(state));
-const load = (name) => deserialize(fs.readFile(`${ROOT}/saves/${name}`));
+const load = (name) => deserialize(fs.readFileSync(`${ROOT}/saves/${name}`));
 
-module.exports = { save, load };
+const getSaveNames = () => fs.readdirSync(`${ROOT}/saves`);
+
+module.exports = { save, load, getSaveNames };
