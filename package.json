@@ -1,0 +1,29 @@
+{
+  "name": "skyboulder",
+  "version": "0.0.1",
+  "description": "",
+  "main": "Main.js",
+  "dependencies": {
+    "app-module-path": "^2.2.0",
+    "async": "^2.6.0",
+    "colour": "^0.7.1",
+    "inquirer": "^5.2.0",
+    "npm": "^6.0.0",
+    "roll": "^1.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "clear; node Main",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Arvraepe/skyboulder.git"
+  },
+  "author": "Arvraepe",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Arvraepe/skyboulder/issues"
+  },
+  "homepage": "https://github.com/Arvraepe/skyboulder#readme"
+}
